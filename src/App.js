@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// MainApp.js
+import React, { useState } from "react";
+import PopupForm from "./Components/PopupForm";
+import CompanyTable from "./Components/CompanyTable";
 
 function App() {
+  const [companies, setCompanies] = useState([]);
+
+  const addCompany = (newCompany) => {
+    setCompanies([...companies, newCompany]);
+  };
+
+  const editCompany = (editedCompany) => {
+    // Implement edit functionality
+  };
+
+  const deleteCompany = (companyId) => {
+    // Implement delete functionality
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button>Add Company</button>
+      <PopupForm onSave={addCompany} />
+      <CompanyTable
+        companies={companies}
+        onEdit={editCompany}
+        onDelete={deleteCompany}
+      />
     </div>
   );
 }

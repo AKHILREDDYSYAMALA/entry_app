@@ -5,7 +5,7 @@ import CompanyTable from "./Components/CompanyTable";
 
 function App() {
   const [companies, setCompanies] = useState([]);
-
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const addCompany = (newCompany) => {
     setCompanies([...companies, newCompany]);
   };
@@ -18,10 +18,16 @@ function App() {
     // Implement delete functionality
   };
 
+  const handleClosePopup = () => {
+    setPopupOpen(false); // Close the popup
+  };
+
   return (
     <div>
-      <button>Add Company</button>
-      <PopupForm onSave={addCompany} />
+      <button onClick={() => setPopupOpen(true)}>Add Company</button>
+      {isPopupOpen && (
+        <PopupForm onSave={addCompany} onClose={handleClosePopup} />
+      )}
       <CompanyTable
         companies={companies}
         onEdit={editCompany}

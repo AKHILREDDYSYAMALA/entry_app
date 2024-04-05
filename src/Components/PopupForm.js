@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from "react";
 
-function PopupForm({ onSave, onClose,companyToEdit }) {
-  const [companyData, setCompanyData] = useState({
+function PopupForm({ onSave, onClose,companyToEdit }) {  const [companyData, setCompanyData] = useState({
     name: { value: "", isValid: true },
     email: { value: "", isValid: true },
     contact: { value: "", isValid: true },
